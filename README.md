@@ -22,7 +22,6 @@ Add plugins to work with markdown and pandoc
 
 My Pandoc settings in sublime `Sublime Text > Preferences > Package settings > Pandoc > Settings (User)`
 
-    ```javascript
     {
       "default": {
         "pandoc-path": "/usr/local/bin/pandoc",
@@ -99,7 +98,6 @@ My Pandoc settings in sublime `Sublime Text > Preferences > Package settings > P
         ]
       }
     }
-    ```
 
 Find and replace `/Users/stijn/frontend/revealjs/` with the path you are cloning this repository into.
 
