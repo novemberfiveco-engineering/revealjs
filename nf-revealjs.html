@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>$title$</title>
+
+<meta name="description" content="$title$">
+
+$for(author)$
+  <meta name="author" content="$author$" />
+$endfor$
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0/css/reveal.min.css">
+$if(theme)$
+  <link rel="stylesheet" href="http://localhost:8000/nf-revealjs-$theme$.css" id="theme">
+$else$
+  <link rel="stylesheet" href="http://localhost:8000/nf-revealjs.css" id="theme">
+$endif$
+
+<style type="text/css" media="screen">
+    .scrollable {
+overflow-y: auto !important;
+overflow-x: hidden !important;
+height: 700px;
+    }
+</style>
+<!-- For syntax highlighting -->
+$if(highlight-style)$
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0/lib/css/$highlight-style$.css">
+$else$
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0/lib/css/zenburn.css">
+$endif$
+
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+  document.write( '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0/css/print/' +
+    ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) +
+    '.css" type="text/css" media="print">' );
+</script>
+
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+$for(header-includes)$
+  $header-includes$
+$endfor$
+</head>
+
+<body>
+$for(include-before)$
+  $include-before$
+$endfor$
+
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+
+  <section class="nftitle">
+    <div class="nftitleback">
+      <h1>$title$</h1>
+      $for(author)$<h4>$author$</h4>$endfor$
+      <p>
+        <h4>$date$</h4>
+      </p>
+    </div>
+  </section>
+
+$if(toc)$
+<section>
+  <h2>Outline</h2>
+  <nav id="$idprefix$TOC">
+    $toc$
+  </nav>
+</section>
+$endif$
+
+$body$
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0/lib/js/head.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0/js/reveal.min.js"></script>
+
+<script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: false,
+  // available themes are in /css/theme
+  $if(theme)$
+    theme: Reveal.getQueryHash().theme || '$theme$',
+  $else$
+    theme: Reveal.getQueryHash().theme || 'default',
+  $endif$
+  // default/cube/page/concave/zoom/linear/fade/none
+  $if(transition)$
+    transition: Reveal.getQueryHash().transition || '$transition$',
+  $else$
+    transition: Reveal.getQueryHash().transition || 'default',
+  $endif$
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+    { src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.3.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'https://cdnjs.cloudflare.com/ajax/libs/showdown/1.5.0/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'https://cdnjs.cloudflare.com/ajax/libs/markdown.js/0.5.0/markdown.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'https://cdnjs.cloudflare.com/ajax/libs/zoom.js/0.0.1/zoom.min.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+  });
+</script>
+
+</body>
+</html>
